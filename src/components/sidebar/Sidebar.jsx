@@ -1,11 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../../Context/Context";
 import "./sidebar.css";
 
 export default function Sidebar() {
   const [cats, setCats] = useState([]);
-
+  const { user, dispatch } = useContext(Context);
   useEffect(() => {
     const getCats = async () => {
       const res = await axios.get("/categories");
@@ -20,11 +21,19 @@ export default function Sidebar() {
       <div className="sidebarItem">
         <span className="sidebarTitle">ABOUT ME</span>
         <img
-          src="https://themegoods-cdn-pzbycso8wng.stackpathdns.com/grandblog/demo/wp-content/uploads/2015/11/aboutme.jpg"
+          src={
+            user
+              ? `${user.profilePic}`
+              : "https://themegoods-cdn-pzbycso8wng.stackpathdns.com/grandblog/demo/wp-content/uploads/2015/11/aboutme.jpg"
+          }
           alt=""
         />
+
         <p>
-          They are the person who wants to work and wants to do a great job, the
+          Hey this is
+          <b style={{ textTransform: "uppercase" }}> {user.username}</b> and you
+          are reading my posts. They are the person who wants to work and wants
+          to do a great job, the
         </p>
       </div>
       <div className="sidebarItem">

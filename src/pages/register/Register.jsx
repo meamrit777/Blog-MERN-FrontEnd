@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./register.css";
 
 export default function Register() {
@@ -53,7 +53,9 @@ export default function Register() {
           Register
         </button>
       </form>
-      <button className="registerLoginButton">Login</button>
+      <Link to="/login" className="link">
+        <button className="registerLoginButton">Login</button>
+      </Link>
       {error && (
         <span style={{ color: "#f50057", marginTop: "10px" }}>
           Something went wrong!
