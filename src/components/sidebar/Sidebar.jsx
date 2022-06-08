@@ -6,7 +6,7 @@ import "./sidebar.css";
 
 export default function Sidebar() {
   const [cats, setCats] = useState([]);
-  const { user, dispatch } = useContext(Context);
+  const { user } = useContext(Context);
   useEffect(() => {
     const getCats = async () => {
       const res = await axios.get("/categories");
@@ -15,7 +15,7 @@ export default function Sidebar() {
     };
     getCats();
   }, []);
-
+  console.log("username:", user);
   return (
     <div className="sidebar">
       <div className="sidebarItem">
@@ -30,10 +30,8 @@ export default function Sidebar() {
         />
 
         <p>
-          Hey this is
-          <b style={{ textTransform: "uppercase" }}> {user.username}</b> and you
-          are reading my posts. They are the person who wants to work and wants
-          to do a great job, the
+          You are reading my posts. They are the person who wants to work and
+          wants to do a great job, the
         </p>
       </div>
       <div className="sidebarItem">
