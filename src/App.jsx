@@ -12,7 +12,7 @@ import { Context } from "./Context/Context";
 function App() {
   const { user } = useContext(Context);
   const currentUser = user;
-  console.log("currentUser", currentUser);
+  // console.log("currentUser", currentUser);
   return (
     <Router>
       <Topbar />

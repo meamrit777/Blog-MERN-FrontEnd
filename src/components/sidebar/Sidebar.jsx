@@ -7,6 +7,8 @@ import "./sidebar.css";
 export default function Sidebar() {
   const [cats, setCats] = useState([]);
   const { user } = useContext(Context);
+  const PF = "http://localhost:5000/images/";
+
   useEffect(() => {
     const getCats = async () => {
       const res = await axios.get("/categories");
@@ -15,7 +17,7 @@ export default function Sidebar() {
     };
     getCats();
   }, []);
-  console.log("username:", user);
+  // console.log("username:", user);
   return (
     <div className="sidebar">
       <div className="sidebarItem">
@@ -23,7 +25,7 @@ export default function Sidebar() {
         <img
           src={
             user
-              ? `${user.profilePic}`
+              ? `${PF + user.profilePic}`
               : "https://themegoods-cdn-pzbycso8wng.stackpathdns.com/grandblog/demo/wp-content/uploads/2015/11/aboutme.jpg"
           }
           alt=""

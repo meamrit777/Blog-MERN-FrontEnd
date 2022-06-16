@@ -9,13 +9,13 @@ import { useLocation } from "react-router-dom";
 export default function Homepage() {
   const [posts, setPosts] = useState([]);
   const { search } = useLocation();
-  console.log("search", search);
+  // console.log("search", search);
 
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get("/posts" + search);
       setPosts(res.data);
-      console.log("first", res.data);
+      // console.log("first", res.data);
     };
     fetchPosts();
   }, [search]);

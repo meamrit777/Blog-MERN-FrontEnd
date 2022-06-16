@@ -27,7 +27,7 @@
 }
 
 .topCenter {
-  flex: 6;
+  flex: 8;
 }
 
 .topList {
@@ -39,14 +39,15 @@
 }
 
 .topListItem {
-  margin-right: 20px;
+  margin-right: 50px;
   font-size: 18px;
   font-weight: 300;
   cursor: pointer;
 }
 
-.topListItem:hover{
-    color: gray;
+.topListItem:hover {
+  color: white;
+  background-color: #666;
 }
 
 .topImg {
