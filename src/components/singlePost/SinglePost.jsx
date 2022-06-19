@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Context } from "../../Context/Context";
 import "./singlePost.css";
+import swal from "sweetalert";
 
 export default function SinglePost() {
   const location = useLocation();
@@ -35,7 +36,26 @@ export default function SinglePost() {
       console.log(err);
     }
   };
-
+  const archiveFunction = () => {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this imaginary file!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        handleDelete();
+        swal("Your post has been deleted!", {
+          icon:"success",
+          buttons:false,
+          timer: 2500,
+        });
+      } else {
+        return;
+      }
+    });
+  };
   const handleUpdate = async () => {
     try {
       await axios.put(`/posts/${post._id}`, {
@@ -71,7 +91,7 @@ export default function SinglePost() {
                 ></i>
                 <i
                   className="singlePostIcon far fa-trash-alt"
-                  onClick={handleDelete}
+                  onClick={archiveFunction}
                 ></i>
               </div>
             )}
